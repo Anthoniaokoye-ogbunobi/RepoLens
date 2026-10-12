@@ -1,4 +1,4 @@
-from repolens.analysis import count_commits, count_commits_by_author
+from repolens.analysis import count_commits, count_commits_by_author, find_most_active_author
 
 def test_multiple_commits():
     commits = [
@@ -97,3 +97,26 @@ def test_count_commits_by_author_with_no_commits():
     result = count_commits_by_author(commits)
 
     assert result == {}
+
+def test_find_most_active_author():
+    author_count = {"Mary" : 8, "John" : 3}
+
+    result = find_most_active_author(author_count)
+
+    assert result == "Mary"
+
+
+def test_find_most_active_author_with_no_commits():
+    author_count = {}
+
+    result = find_most_active_author(author_count)
+
+    assert result is None
+
+
+def test_find_most_active_author_with_single_author():
+    author_count = {"Mary" : 7}
+
+    result = find_most_active_author(author_count)
+
+    assert result == "Mary"

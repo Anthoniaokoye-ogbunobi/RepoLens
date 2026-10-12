@@ -1,6 +1,7 @@
 def count_commits(commits):
     return len(commits)
 
+
 def count_commits_by_author(commits):
     author_count = {}
 
@@ -12,3 +13,10 @@ def count_commits_by_author(commits):
             author_count[author_name] = 1
 
     return author_count
+
+
+def find_most_active_author(author_count):
+    if not author_count:
+        return None
+
+    return max(author_count, key=author_count.get)
